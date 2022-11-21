@@ -42,17 +42,17 @@ export default () =>
             return true;
           };
 
+          currentChannel.broadcast({
+            type: "someContext",
+            id: { name: "hello" },
+          });
+
           fdc3.addContextListener("someContext", (ctx) => {
             if (ctx.type == "someContext") {
               wrapper.resolve();
             } else {
               wrapper.reject("wrong context type");
             }
-          });
-
-          currentChannel.broadcast({
-            type: "someContext",
-            id: { name: "hello" },
           });
 
           await wrapper.promise;
