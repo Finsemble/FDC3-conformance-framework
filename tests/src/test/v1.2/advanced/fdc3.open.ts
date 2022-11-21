@@ -205,7 +205,7 @@ export default () =>
         expect(ex).to.have.property("message", OpenError.AppTimeout, openDocs);
       }
       await closeAppWindows(AOpensBWithWrongContextTest);
-    });
+    }).timeout(constants.NoListenerTimeout);
 
     const AOpensBNoListenTest =
       "(AOpensBNoListen) Receive AppTimeout error when targeting app with no listeners";
@@ -221,7 +221,7 @@ export default () =>
         expect(ex).to.have.property("message", OpenError.AppTimeout, openDocs);
       }
       await closeAppWindows(AOpensBNoListenTest);
-    });
+    }).timeout(constants.NoListenerTimeout);
 
     const AOpensBMultipleListenTest =
       "(AOpensBMultipleListen) Can open app B from app A with context and AppMetadata (name and appId) as target, app B has opened multiple listeners";
